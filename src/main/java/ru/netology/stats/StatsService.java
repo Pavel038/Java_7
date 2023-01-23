@@ -13,12 +13,12 @@ public class StatsService {
     //Среднюю сумму продаж в месяц
     public int averageSalesAmount(int[] sales) {
         int sum = 0;
-        int a = 0;
+        int averageNumberOfSales = 0;
         for (int i = 0; i < sales.length; i++) {
             sum = sum + sales[i];
         }
-        a = sum / sales.length;
-        return a;
+        averageNumberOfSales = sum / sales.length;
+        return averageNumberOfSales;
     }
 
     //Номер месяца, в котором был пик продаж, то есть осуществлены продажи на максимальную сумму.
@@ -52,8 +52,17 @@ public class StatsService {
     //Количество месяцев, в которых продажи были выше среднего.
     public int monthsWithAboveAverageSales(int[] sales) {
         int numberOfMonths = 0;
+        int sum = 0;
+        int averageNumberOfSales = 0;
+        {
+            for (int i = 0; i < sales.length; i++) {
+                sum = sum + sales[i];
+            }
+            averageNumberOfSales = sum / sales.length;
+        }
+
         for (int i = 0; i < sales.length; i++) {
-            if (sales[i] > 15)
+            if (sales[i] > averageNumberOfSales)
                 numberOfMonths++;
 
         }
@@ -62,16 +71,26 @@ public class StatsService {
 
 
     //Количество месяцев, в которых продажи были ниже среднего.
-    public int monthsWithBelowAverageSales(long[] sales) {
+    public int monthsWithBelowAverageSales(int[] sales) {
         int numberOfMonths = 0;
+        int sum = 0;
+        int averageNumberOfSales = 0;
+        {
+            for (int i = 0; i < sales.length; i++) {
+                sum = sum + sales[i];
+            }
+            averageNumberOfSales = sum / sales.length;
+        }
+
         for (int i = 0; i < sales.length; i++) {
-            if (sales[i] < 15) {
+            if (sales[i] > averageNumberOfSales) {
                 numberOfMonths++;
             }
         }
 
         return numberOfMonths;
     }
-
 }
+
+
 
