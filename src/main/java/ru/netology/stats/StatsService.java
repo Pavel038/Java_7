@@ -11,15 +11,19 @@ public class StatsService {
     }
 
     //Среднюю сумму продаж в месяц
-    public int averageSalesAmount(long[] sales) {
+    public long averageSalesAmount(long[] sales) {
         long sum = 0;
-        int averageNumberOfSales = 0;
+        long averageNumberOfSales = 0;
         for (int i = 0; i < sales.length; i++) {
             sum = sum + sales[i];
+
+            averageNumberOfSales = sum / sales.length;
+
         }
-        averageNumberOfSales = (int) (sum / sales.length);
         return averageNumberOfSales;
+
     }
+
 
     //Номер месяца, в котором был пик продаж, то есть осуществлены продажи на максимальную сумму.
     public int maxSales(long[] sales) {
@@ -33,6 +37,7 @@ public class StatsService {
         }
         return maxMonth + 1;
     }
+
 
     //Номер месяца, в котором был минимум продаж, то есть осуществлены продажи на минимальную сумму.
     public int minSales(long[] sales) {
@@ -77,6 +82,8 @@ public class StatsService {
         return numberOfMonths;
     }
 }
+
+
 
 
 
